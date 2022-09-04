@@ -234,8 +234,8 @@ if __name__ == "__main__":
             capture.release()               # 释放资源
             if video_save_path!="":
                 # 转格式
-                video_file = open(video_save_path, 'rb')
-                video_bytes = video_file.read()
+                # video_file = open(video_save_path, 'rb')
+                # video_bytes = video_file.read()
                 #播放视频
                 out.release()               # 释放资源
                 # st.video(video_save_path)   # 播放处理好了的视频
