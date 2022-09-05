@@ -14,7 +14,7 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 import streamlit.components.v1 as html
 import tempfile
-from vega_datasets import data
+import altair as alt
 
 import io
 
@@ -344,10 +344,16 @@ if __name__ == "__main__":
             html.iframe("https://mp.weixin.qq.com/s/5VDGsnpgx8iF90aF7p1yMg")
 
         elif selecte2 == "Plotly":
-            source = data.stocks()
-            all_symbols = source.symbol.unique()
-            selected_langs = st.multiselect("Choose Areas", all_symbols, all_symbols[:3])
+            source = pd.DataFrame({
+                        'a': ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'],
+                        'b': [28, 55, 43, 91, 81, 53, 19, 87, 52]
+                    })
+            chart = alt.Chart(source).mark_bar().encode(
+                x='a',
+                y='b'
+            )
             space(1)
+            st.altair_chart(chart, use_container_width=True)
             html.iframe("https://mp.weixin.qq.com/s/ckcDXhoRmxlxswOviQUbFg")
 
         elif selecte2 == "Streamlit-apex-charts":
