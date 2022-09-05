@@ -10,3 +10,4 @@ h5py
 streamlit
 streamlit_option_menu
 altair
+pandas
