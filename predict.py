@@ -338,27 +338,60 @@ if __name__ == "__main__":
             st.info('适用涉鸟故障类型:鸟巢类、鸟粪类 、鸟体短接类、鸟啄类')
 
     elif choose == "数据可视化":
-        selecte2 = option_menu(None, ["Echarts", "Plotly", "Streamlit-apex-charts"],
-                            icons=['house', 'cloud-upload', "list-task"],
+        selecte2 = option_menu(None, ["故障类型", "地理分布", "月份分布"],
+                            icons=['text-center', 'geo-alt', "calendar-month"],
                             menu_icon="cast", default_index=0, orientation="horizontal")
-        if selecte2 == "Echarts":
-            html.iframe("https://mp.weixin.qq.com/s/5VDGsnpgx8iF90aF7p1yMg")
-
-        elif selecte2 == "Plotly":
+        if selecte2 == "故障类型": 
             source = pd.DataFrame({
-                        'a': ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'],
-                        'b': [28, 55, 43, 91, 81, 53, 19, 87, 52]
+                        '输电线路涉鸟故障类型': ['鸟粪类', '鸟巢类', '鸟体短接类', '其他类型渉鸟故障'],
+                        'value': [71.32, 25.62, 2.17, 0.99]
+                    })
+            chart = alt.Chart(source).mark_arc().encode(
+                theta=alt.Theta(field="value", type="quantitative", stack=True),
+                color=alt.Color(field="输电线路涉鸟故障类型", type="nominal"),   
+            )
+            pie = chart.mark_arc(outerRadius=100)
+            text_value = chart.mark_text(radius=120, size=15).encode(text="value:Q")
+            st.altair_chart(pie + text_value, use_container_width=True)
+            space(1)  
+            st.info('通过统计分析2009年至2016年国网公司发生的涉鸟故障，发现鸟粪类故障最多，有723次，占比71.23%；鸟巢类故障有260次，占比25.62%；鸟体短接类22次，占比2.17%；其它类型涉鸟故障（次生蛇害类）10次，占比0.99%。由此可看出，引起输电线路跳闸的危害程度依次分别为：鸟粪类故障、鸟巢类故障、鸟体短接类故障和其它类型涉鸟故障（次生蛇害类）。')
+
+        elif selecte2 == "地理分布":
+            source = pd.DataFrame({
+                        '输电线路涉鸟故障分布': ['江西', '青海', '西藏', '江苏', '新疆', '吉林', '辽宁', '蒙东', '安徽', '福建',
+                                               '陕西', '宁夏', '黑龙江', '冀北', '山西', '甘肃', '山东', '北京', '河北', '浙江',
+                                               '湖北', '四川', '天津', '湖南', '河南', '重庆'],
+                        '涉鸟故障发生的次数':   [ 146,    79,    63,     61,     52,    51,     50,    48,     47,    36,   
+                                                 33,     32,    31,     30,     30,    27,     26,    25,     24,    23,
+                                                 22,     21,    19,     15,     13,    11]
                     })
             chart = alt.Chart(source).mark_bar().encode(
-                x='a',
-                y='b'
-            )
-            space(1)
+                x='输电线路涉鸟故障分布:O',
+                y="涉鸟故障发生的次数:Q",
+                # The highlight will be set on the result of a conditional statement
+                color=alt.condition(
+                    alt.datum.输电线路涉鸟故障分布 == "江西",  # If the 输电线路涉鸟故障分布 is 江西 this test returns True,
+                    alt.value('orange'),     # which sets the bar orange.
+                    alt.value('steelblue')   # And if it's not true it sets the bar steelblue.
+                )
+            ).properties(width=600)
             st.altair_chart(chart, use_container_width=True)
-            html.iframe("https://mp.weixin.qq.com/s/ckcDXhoRmxlxswOviQUbFg")
+            space(1) 
+            st.info('由图可看出，在国网公司系统26家单位中，江西、青海、西藏、江苏、新疆、吉林和辽宁等公司输电线路涉鸟故障发生的次数较多，这与鸟类迁徙路径及当地留鸟特点基本相符。')
 
-        elif selecte2 == "Streamlit-apex-charts":
-            st.components.v1.iframe("https://mp.weixin.qq.com/s/Sm3UifwoxVKTsMD-rsyovA")
+        elif selecte2 == "月份分布":
+            source = pd.DataFrame({
+                        '输电线路涉鸟故障月份分布（江西）': ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                        '发生故障的次数':                 [ 10,    12,    28,    79,    53,    52,    36,    24,    6,     8,     21,     8   ]
+                    })
+            chart = alt.Chart(source).mark_line().encode(
+                x='输电线路涉鸟故障月份分布（江西）:O',
+                y="发生故障的次数:Q"
+                )
+            st.altair_chart(chart, use_container_width=True)
+            space(1) 
+            st.info('对2005年至2019年，江西电网输电线路涉鸟故障按发生的月份统计。由图可知，涉鸟故障发生次数的较多的月份为4月、5月和6月，发生故障的次数分别为79次、53次和52次，该时间段正是鸟类繁殖与迁徙的活跃时段。')
+
 
 
     elif choose == "地理":
