@@ -32,7 +32,7 @@ if __name__ == "__main__":
     st.set_page_config(
         page_title="Hazard Bird Detection",
         page_icon=":baby_chick::baby_chick:",
-        layout="wide",
+        layout="center",
         initial_sidebar_state="expanded"
     ) 
     yolo = YOLO()
