@@ -99,10 +99,18 @@ if __name__ == "__main__":
     # 网页侧边栏
     #-------------------------------------------------------------------------#
     with st.sidebar:
-        choose = option_menu("甄羽Streamlit", ["拍照识鸟", "视频识别","防鸟装置介绍", "数据可视化", "地图分布", "其他应用"],
-                            icons=['camera-fill', 'file-earmark-music', 'bar-chart', 'brightness-high'], # 对应的小图标，不用改
-                            menu_icon="broadcast", default_index=0)
-
+        choose = option_menu("甄羽", ["拍照识鸟", "视频识别", "防鸟装置介绍", "数据可视化", "地图分布", "其他"],
+                            icons=['camera', 'file-play', 'exclamation-circle', 'eye','flag','folder-plus'],
+                            menu_icon="brightness-high", default_index=0)
+    st.sidebar.markdown(f"\n\n\n")
+    st.sidebar.markdown(
+        '<p ' + authors_css + '>' + 'By </p>',
+        unsafe_allow_html=True)
+    st.sidebar.markdown(
+        '<a ' + authors_css + ' target="_blank" href="http://ies.ncu.edu.cn/">' + '南昌大学能源与电气工程系</a>',
+        unsafe_allow_html=True,
+    )    
+    
     if choose == "拍照识鸟":
         #-------------------------------------------------------------------------#
         # 1、如果想要进行检测完的图片的保存，利用 r_image.save("img.jpg")即可保存，直接在predict.py里进行修改即可。 
