@@ -19,6 +19,21 @@ import altair as alt
 
 import io
 
+authors_css = """
+        style='
+        display: block;
+        margin-bottom: 0px;
+        margin-top: 0px;
+        padding-top: 0px;
+        font-weight: 400;
+        font-size:1.1em;
+        color:#DBBD8A;
+        filter: brightness(85%);
+        text-align: center;
+        text-decoration: none;
+        '
+"""
+
 def space(num_lines=1):
     """Adds empty lines to the Streamlit app."""
     for _ in range(num_lines):
