@@ -143,7 +143,7 @@ class YOLO(object):
     #---------------------------------------------------#
     #   检测图片
     #---------------------------------------------------#
-    def detect_image(self, image, crop = False, count = False):
+    def detect_image(self, image, crop = False, count = False, result_t={}):
         #---------------------------------------------------#
         #   计算输入图片的高和宽
         #---------------------------------------------------#
@@ -359,7 +359,17 @@ class YOLO(object):
         result_table.iloc[0,2] = top_label_num[0]
         result_table.iloc[0,3] = f'<a target="_blank">{ProblemTpye[Predicted_LableClass]}</a>'
         result_table.iloc[0,4] = f'<a target="_blank">{HarmRank[Predicted_LableClass]}</a>'
-        result_table.iloc[0,5] = f'<a target="_blank">{Measure[Predicted_LableClass]}</a>'       
+        result_table.iloc[0,5] = f'<a target="_blank">{Measure[Predicted_LableClass]}</a>'   
+
+        # result_t[0] = '危害鸟种：' + f'<a href="{link_Baidu}" target="_blank">{Chi_EngName[Predicted_LableClass]}</a>'
+        result_t[0] = '危害鸟种：' + f'<a target="_blank">{ProblemTpye[Predicted_LableClass]}</a>'
+        result_t[1] = '置信度：' + str(top_conf[top_label_index[0]])
+        result_t[2] = '先验框个数：' + str(top_label_num[0])
+        result_t[3] = '故障类型：' + f'<a target="_blank">{ProblemTpye[Predicted_LableClass]}</a>'
+        result_t[4] = '风险等级：' + f'<a target="_blank">{HarmRank[Predicted_LableClass]}</a>'
+        result_t[5] = '防治措施：' + f'<a target="_blank">{Measure[Predicted_LableClass]}</a>'  
+        result_t[6] = '危害鸟种：' + f'<a href="{link_Baidu}" target="_blank">{Chi_EngName[Predicted_LableClass]}</a>' 
+
         
         return image
 
@@ -565,5 +575,11 @@ class YOLO(object):
     #---------------------------------------------------------#
     # 显示表格结果
     #---------------------------------------------------------#    
-    def show_result_table(self):
+    def show_result_table(result_1='1', result_2='2', result_3='3', result_4='4', result_5='5', result_6='6' , result_7='7' ):
+        st.markdown(result_7, unsafe_allow_html=True)
+        st.markdown(result_2, unsafe_allow_html=True)
+        st.markdown(result_3, unsafe_allow_html=True)
+        st.markdown(result_4, unsafe_allow_html=True)
+        st.markdown(result_5, unsafe_allow_html=True)
+        st.markdown(result_6, unsafe_allow_html=True)
         st.write(result_table.to_html(escape=False), unsafe_allow_html=True) #显示表格
