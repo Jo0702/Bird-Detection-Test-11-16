@@ -575,11 +575,13 @@ class YOLO(object):
     #---------------------------------------------------------#
     # 显示表格结果
     #---------------------------------------------------------#    
-    def show_result_table(result_1='1', result_2='2', result_3='3', result_4='4', result_5='5', result_6='6' , result_7='7' ):
-        st.markdown(result_7, unsafe_allow_html=True)
-        st.markdown(result_2, unsafe_allow_html=True)
-        st.markdown(result_3, unsafe_allow_html=True)
-        st.markdown(result_4, unsafe_allow_html=True)
-        st.markdown(result_5, unsafe_allow_html=True)
-        st.markdown(result_6, unsafe_allow_html=True)
-        st.write(result_table.to_html(escape=False), unsafe_allow_html=True) #显示表格
+    def show_result_table(result_1='1', result_2='2', result_3='3', result_4='4', result_5='5', result_6='6' , result_7='7' , Video=1 ):
+        if Video == 1:
+            st.markdown(result_7, unsafe_allow_html=True)
+            st.markdown(result_2, unsafe_allow_html=True)
+            st.markdown(result_3, unsafe_allow_html=True)
+            st.markdown(result_4, unsafe_allow_html=True)
+            st.markdown(result_5, unsafe_allow_html=True)
+            st.markdown(result_6, unsafe_allow_html=True)
+        else:
+            st.write(result_table.to_html(escape=False), unsafe_allow_html=True) #显示表格
