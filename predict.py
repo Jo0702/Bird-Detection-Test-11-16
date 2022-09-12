@@ -153,21 +153,24 @@ if __name__ == "__main__":
         yolo.reload_col_list() 
         #-------------------------------------------------------------------------#
         # 图片检测及反馈
-        #-------------------------------------------------------------------------#           
+        #-------------------------------------------------------------------------#   
+        detection_result = ['','','','','','','']
         if img:
             try:
                 image = Image.open(img)
             except:
                 print('Open Error! Try again!')
             else:
-                r_image = yolo.detect_image(image, crop = crop, count=count)
+                r_image = yolo.detect_image(image, crop = crop, count=count, result_t=detection_result)
                 #---------------------------------------------------------#
                 # 显示检测结果
                 #---------------------------------------------------------#                 
                 st.balloons()                   # 显示成功放气球提示
-                yolo.show_result_table()        # 用表格显示检测结果                
-                st.title('您选择的图片:')
-                st.image(r_image)               # 显示检测后带先验框的图片
+                cols = st.columns(2)
+                with cols[0]:
+                        st.image(r_image)               # 显示检测后带先验框的图片
+                with cols[1]:
+                        yolo.show_result_table(result_2=detection_result[1], result_3=detection_result[2], result_4=detection_result[3], result_5=detection_result[4], result_6=detection_result[5], result_7=detection_result[6])        # 用表格显示检测结果    
                 
         else:
             st.title(":exclamation:您还未选择图片")
