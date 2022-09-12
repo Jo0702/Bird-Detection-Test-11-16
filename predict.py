@@ -421,12 +421,16 @@ if __name__ == "__main__":
 
 
 
-    elif choose == "地理":
-        selecte4 = option_menu(None, ["地震数据", "KML", "Mapinfo TAB"],
+    elif choose == "地图分布":
+        selecte4 = option_menu(None, ["地图", "KML", "Mapinfo TAB"],
                             icons=['house', 'cloud-upload', 'cloud-upload'],
                             menu_icon="cast", default_index=0, orientation="horizontal")
 
-        if selecte4 == "地图分布":
+        if selecte4 == "地图":
+            df = pd.DataFrame(
+                np.random.randn(1000, 2) / [50, 50] + [50.76, -80.4],
+                columns=['lat', 'lon'])    
+            st.map(df)                
             html.iframe("https://mp.weixin.qq.com/s/HwYQXotuyZAtecOY6SBYKw")
 
         elif selecte4 == "KML":
@@ -435,6 +439,12 @@ if __name__ == "__main__":
         elif selecte4 == "Mapinfo TAB":
             html.iframe("https://mp.weixin.qq.com/s/kP731l40Rf61CTWfyqbQmg")
 
-
     elif choose == "其他应用":
-        st.title("1")
+        st.title("“甄羽”--—电网涉鸟故障相关鸟种智能识别软件")       
+        st.graphviz_chart('''
+            digraph {
+                收集历史故障信息 -> 构建危害鸟种数据集
+                构建危害鸟种数据集 -> 基于YOLOv5算法建立目标检测模型
+                基于YOLOv5算法建立目标检测模型 -> 集成算法编写软件应用程序
+            }
+        ''')  
