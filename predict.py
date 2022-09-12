@@ -439,7 +439,7 @@ if __name__ == "__main__":
         elif selecte4 == "Mapinfo TAB":
             html.iframe("https://mp.weixin.qq.com/s/kP731l40Rf61CTWfyqbQmg")
 
-    elif choose == "其他应用":
+    elif choose == "其他":
         st.title("“甄羽”--—电网涉鸟故障相关鸟种智能识别软件")       
         st.graphviz_chart('''
             digraph {
