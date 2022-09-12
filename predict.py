@@ -170,7 +170,7 @@ if __name__ == "__main__":
                 with cols[0]:
                         st.image(r_image)               # 显示检测后带先验框的图片
                 with cols[1]:
-                        yolo.show_result_table(result_2=detection_result[1], result_3=detection_result[2], result_4=detection_result[3], result_5=detection_result[4], result_6=detection_result[5], result_7=detection_result[6])        # 用表格显示检测结果    
+                        yolo.show_result_table(result_2=detection_result[1], result_3=detection_result[2], result_4=detection_result[3], result_5=detection_result[4], result_6=detection_result[5], result_7=detection_result[6], Video=1)        # 用表格显示检测结果    
                 
         else:
             st.title(":exclamation:您还未选择图片")
@@ -258,7 +258,7 @@ if __name__ == "__main__":
             #---------------------------------------------------------#
             # 显示检测结果
             #---------------------------------------------------------#                  
-            yolo.show_result_table()        # 用表格显示检测结果
+            yolo.show_result_table( result_2=detection_result[1], result_3=detection_result[2], result_4=detection_result[3], result_5=detection_result[4], result_6=detection_result[5], result_7=detection_result[6], Video=0)
             capture.release()               # 释放资源
             if video_save_path!="":
                 # 转格式
