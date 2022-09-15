@@ -370,7 +370,7 @@ if __name__ == "__main__":
                             menu_icon="cast", default_index=0, orientation="horizontal")
         if selecte2 == "故障类型": 
             source = pd.DataFrame({
-                        '输电线路涉鸟故障类型': ['鸟粪类', '鸟巢类', '鸟体短接类', '其他类型渉鸟故障'],
+                        '输电线路涉鸟故障类型': ['鸟粪类', '鸟巢类', '鸟体短接类', '其他类型涉鸟故障'],
                         'value': [71.32, 25.62, 2.17, 0.99]
                     })
             chart = alt.Chart(source).mark_arc().encode(
