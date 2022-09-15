@@ -244,7 +244,7 @@ if __name__ == "__main__":
                     # 转变成Image
                     frame = Image.fromarray(np.uint8(frame))
                     # 进行检测
-                    frame = np.array(yolo.detect_image(frame, crop = Flase, count=Flase, result_t=detection_result))
+                    frame = np.array(yolo.detect_image(frame, Flase, Flase, detection_result))
                     # RGBtoBGR满足opencv显示格式
                     frame = cv2.cvtColor(frame,cv2.COLOR_RGB2BGR)
                     
