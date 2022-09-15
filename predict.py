@@ -244,7 +244,7 @@ if __name__ == "__main__":
                     # 转变成Image
                     frame = Image.fromarray(np.uint8(frame))
                     # 进行检测
-                    frame = np.array(yolo.detect_image(frame))
+                    frame = np.array(yolo.detect_image(frame, crop = Flase, count=Flase, result_t=detection_result))
                     # RGBtoBGR满足opencv显示格式
                     frame = cv2.cvtColor(frame,cv2.COLOR_RGB2BGR)
                     
@@ -259,7 +259,7 @@ if __name__ == "__main__":
             #---------------------------------------------------------#
             # 显示检测结果
             #---------------------------------------------------------#                  
-            yolo.show_result_table( result_2=detection_result[1], result_3=detection_result[2], result_4=detection_result[3], result_5=detection_result[4], result_6=detection_result[5], result_7=detection_result[6], Video=0)
+            yolo.show_result_table( result_2=detection_result[1], result_3=detection_result[2], result_4=detection_result[3], result_5=detection_result[4], result_6=detection_result[5], result_7=detection_result[6], Video=1)
             capture.release()               # 释放资源
             if video_save_path!="":
                 # 转格式
