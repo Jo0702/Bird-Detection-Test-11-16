@@ -443,7 +443,7 @@ if __name__ == "__main__":
             html.iframe("https://mp.weixin.qq.com/s/kP731l40Rf61CTWfyqbQmg")
 
     elif choose == "其他":
-        st.title("“甄羽”--—电网涉鸟故障相关鸟种智能识别软件")       
+        st.title("百鸟争名")       
         st.graphviz_chart('''
             digraph {
                 收集历史故障信息 -> 构建危害鸟种数据集
