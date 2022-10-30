@@ -114,7 +114,7 @@ if __name__ == "__main__":
     # 网页侧边栏
     #-------------------------------------------------------------------------#
     with st.sidebar:
-        choose = option_menu("遴羽", ["拍照识鸟", "视频识别", "防鸟装置介绍", "数据可视化", "地图分布", "其他"],
+        choose = option_menu("百鸟争名", ["拍照识鸟", "视频识别", "防鸟装置介绍", "数据可视化", "地图分布", "其他"],
                             icons=['camera', 'file-play', 'exclamation-circle', 'eye','flag','folder-plus'],
                             menu_icon="brightness-high", default_index=0)
     st.sidebar.markdown(f"\n\n\n")
